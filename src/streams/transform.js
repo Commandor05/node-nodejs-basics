@@ -7,7 +7,7 @@ const transform = async () => {
     const revertTransform = new Transform({
         transform(chunk, encoding, callback) {
             const chunkStingified = chunk.toString().trim();
-            callback(null, chunkStingified.split("").reverse().join(""));
+            callback(null, chunkStingified.split("").reverse().join("") + '\n');
         },
     });
   
