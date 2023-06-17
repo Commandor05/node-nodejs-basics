@@ -1,4 +1,5 @@
 const fsOperationError = (
+  error,
   condition,
   message = "Error: FS operation failed"
 ) => {
@@ -10,13 +11,13 @@ const fsOperationError = (
 };
 
 export const alreadyExistsError = (error) => {
-  fsOperationError(error.code === "EEXIST");
+  fsOperationError(error, error.code === "EEXIST");
 };
 
 export const notExistsError = (error) => {
-  fsOperationError(error.code === "ENOENT");
+  fsOperationError(error, error.code === "ENOENT");
 };
 
 export const alreadyExistsOrNotExistsError = (error) => {
-  fsOperationError(error.code === "EEXIST" || error.code === "ENOENT");
+  fsOperationError(error, error.code === "EEXIST" || error.code === "ENOENT");
 };
