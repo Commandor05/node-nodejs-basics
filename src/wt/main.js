@@ -35,13 +35,9 @@ const performCalculations = async () => {
     workersList.set(worker.threadId, workerResult);
   }
 
+  const resultsArray = Array.from(workersList.values());
   console.log(`CPUs count: ${cpusCount}`);
-
-  for (const [workerId, workerResult] of workersList.entries()) {
-    process.stdout.write(
-      `(Worker ${workerId}) status: ${workerResult.status}  data: ${workerResult.data}\n`
-    );
-  }
+  console.log(resultsArray);
 
   process.exit();
 };
